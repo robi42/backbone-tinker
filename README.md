@@ -4,6 +4,8 @@ This is a little playground for cutting-edge single-page JS app dev.
 
 ## Dependencies
 
+* Java (5+)
+
 * [RingoJS](https://github.com/ringo/ringojs)
   * [Stick](https://github.com/hns/stick)
   * [Ringo Modulr](https://github.com/hns/ringo-modulr)
@@ -36,4 +38,8 @@ Then, launch dev server:
 
 Now, point your browser to `localhost:8080` and enjoy hacking.
 
-(BTW, source code resides in `src`, web content in `public`.)
+FYI: source code resides in `src`, compiled code in `public`.
+
+Additionally, deployable code can be found in `build` and (re)built via:
+
+    $ ./bin/build-project

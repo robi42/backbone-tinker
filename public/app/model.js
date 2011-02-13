@@ -23,18 +23,15 @@
           content: this.defaults.content
         });
       }
-      return;
     };
     Todo.prototype.toggle = function() {
       this.save({
         done: !this.get('done')
       });
-      return;
     };
     Todo.prototype.clear = function() {
       this.destroy();
       this.view.remove();
-      return;
     };
     return Todo;
   })();
