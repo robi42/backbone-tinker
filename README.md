@@ -32,6 +32,10 @@ For dev, first start compilation watchers in separate shell sessions, e.g.:
 
     $ ./bin/coffee-watch
 
+    $ ./bin/stylus-watch
+
+    $ ./bin/fusion-watch
+
 Then, launch dev server:
 
     $ ringo server/main.js
@@ -43,3 +47,9 @@ FYI: source code resides in `src`, compiled code in `public`.
 Additionally, deployable code can be found in `build` and (re)built via:
 
     $ ./bin/build-project
+
+BTW, Google Closure compiler is used for JS minification and optimization.
+
+Documentation can be (re)generated in `public/docs` via:
+
+    $ ./bin/docco-create
