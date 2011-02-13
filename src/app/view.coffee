@@ -91,7 +91,7 @@ class TodoView extends Backbone.View
 exports.AppView = class AppView extends Backbone.View
 
   # Instead of generating a new element, bind to the existing skeleton of
-  # the App already present in the HTML.
+  # the app already present in the HTML.
   el: $('#todoapp')
 
   # Delegated events for creating new items, and clearing completed ones.
@@ -115,7 +115,7 @@ exports.AppView = class AppView extends Backbone.View
     todos.fetch()
     return
 
-  # Re-rendering the App just means refreshing the statistics -- the rest
+  # Re-rendering the app just means refreshing the statistics -- the rest
   # of the app doesn't change.
   render: ->
     @.$('#todo-stats').html(tmpl.stats(

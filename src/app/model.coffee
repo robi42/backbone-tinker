@@ -48,7 +48,7 @@ class TodoList extends Backbone.Collection
   remaining: ->
     @.without.apply @, @.done()
 
-  # We keep the Todos in sequential order, despite being saved by unordered
+  # We keep the todos in sequential order, despite being saved by unordered
   # GUID in the database. This generates the next order number for new items.
   nextOrder: ->
     if not @length then 1 else @.last().get('order') + 1
@@ -58,5 +58,5 @@ class TodoList extends Backbone.Collection
     todo.get 'order'
 
 
-# Create our exported collection of **Todos**.
+# Create our exported collection of **todos**.
 exports.todos = new TodoList
