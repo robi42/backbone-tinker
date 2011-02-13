@@ -28,6 +28,8 @@ And the latter:
 
     $ npm install coffee-script
 
+## Howto
+
 For dev, first start compilation watchers in separate shell sessions, e.g.:
 
     $ ./bin/coffee-watch
