@@ -174,5 +174,5 @@ exports.AppView = class AppView extends Backbone.View
       return
 
     show = -> tooltip.show().fadeIn(); return
-    @tooltipTimeout = _.delay(show, 1000);
+    @tooltipTimeout = _.delay(show, 1000)
     return
