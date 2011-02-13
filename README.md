@@ -18,12 +18,22 @@ This is a little playground for cutting-edge single-page JS app dev.
 
 Mentioned packages are installable via `ringo-admin` and `npm` respectively.
 
+Usage example of the former:
+
+    $ ringo-admin install hns/stick
+
+And the latter:
+
+    $ npm install coffee-script
+
 For dev, first start compilation watchers in separate shell sessions, e.g.:
 
-     $ ./bin/coffee-watch
+    $ ./bin/coffee-watch
 
 Then, launch dev server:
 
     $ ringo server/main.js
 
 Now, point your browser to `localhost:8080` and enjoy hacking.
+
+(BTW, source code resides in `src`, web content in `public`.)
