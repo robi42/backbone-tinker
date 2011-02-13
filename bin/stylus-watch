@@ -1,0 +1,10 @@
+#!/usr/bin/env ringo
+
+var fs = require('fs');
+
+if (require.main === module) {
+    require('ringo/subprocess').system(
+            'stylus', '--out', fs.join('..', 'public', 'style'),
+            '--watch', fs.join('..', 'src', 'style'),
+            {dir: module.directory});
+}

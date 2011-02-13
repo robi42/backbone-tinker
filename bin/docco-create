@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+cd public
+docco ../src/app/*

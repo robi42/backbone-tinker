@@ -1,0 +1,4 @@
+hook: "../config/fusion.js"
+output: "../public/app/tmpl.js"
+templateExtension: "eco"
+namespace: "exports"

@@ -1,0 +1,9 @@
+#!/usr/bin/env ringo
+
+var fs = require('fs');
+
+if (require.main === module) {
+    require('ringo/subprocess').system(
+            'fusion', '--config', fs.join('..', 'config', 'fusion.yaml'),
+            '--watch', fs.join('..', 'src', 'tmpl'), {dir: module.directory});
+}
