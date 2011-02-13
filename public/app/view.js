@@ -26,6 +26,7 @@
       _.bindAll(this, 'render', 'close');
       this.model.bind('change', this.render);
       this.model.view = this;
+      return;
     };
     TodoView.prototype.render = function() {
       $(this.el).html(tmpl.item(this.model.toJSON()));
@@ -39,30 +40,37 @@
       this.input = this.$('.todo-input');
       this.input.bind('blur', this.close);
       this.input.val(content);
+      return;
     };
     TodoView.prototype.toggleDone = function() {
       this.model.toggle();
+      return;
     };
     TodoView.prototype.edit = function() {
       $(this.el).addClass('editing');
       this.input.focus();
+      return;
     };
     TodoView.prototype.close = function() {
       this.model.save({
         content: this.input.val()
       });
       $(this.el).removeClass('editing');
+      return;
     };
     TodoView.prototype.updateOnEnter = function(e) {
       if (e.keyCode === 13) {
         this.close();
       }
+      return;
     };
     TodoView.prototype.remove = function() {
       $(this.el).remove();
+      return;
     };
     TodoView.prototype.clear = function() {
       this.model.clear();
+      return;
     };
     return TodoView;
   })();
@@ -84,6 +92,7 @@
       todos.bind('refresh', this.addAll);
       todos.bind('all', this.render);
       todos.fetch();
+      return;
     };
     AppView.prototype.render = function() {
       this.$('#todo-stats').html(tmpl.stats({
@@ -91,6 +100,7 @@
         done: todos.done().length,
         remaining: todos.remaining().length
       }));
+      return;
     };
     AppView.prototype.addOne = function(todo) {
       var view;
@@ -98,9 +108,11 @@
         model: todo
       });
       this.$('#todo-list').append(view.render().el);
+      return;
     };
     AppView.prototype.addAll = function() {
       todos.each(this.addOne);
+      return;
     };
     AppView.prototype.newAttributes = function() {
       return {
@@ -115,10 +127,12 @@
       }
       todos.create(this.newAttributes());
       this.input.val('');
+      return;
     };
     AppView.prototype.clearCompleted = function() {
       _.each(todos.done(), function(todo) {
         todo.clear();
+        return;
       });
       return false;
     };
@@ -135,8 +149,10 @@
       }
       show = function() {
         tooltip.show().fadeIn();
+        return;
       };
       this.tooltipTimeout = _.delay(show, 1000);
+      return;
     };
     return AppView;
   })();
