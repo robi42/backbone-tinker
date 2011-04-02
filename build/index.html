@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="cache.manifest">
 
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Backbone Demo: Todos</title>
-    <link href="style/main.min.css" media="all" rel="stylesheet" type="text/css" />
-    <script src="app/main.min.js"></script>
+    <link rel="stylesheet" media="all" href="screen.min.css" />
+    <script src="app.min.js"></script>
   </head>
 
   <body>
@@ -50,6 +53,7 @@
       <a href="http://robert42.com/">Robert Thurnher</a>
     </div>
 
+    <script>require('main');</script>
   </body>
 
 </html>

@@ -4,54 +4,44 @@ This is a little playground for cutting-edge single-page JS app dev.
 
 ## Dependencies
 
-* Java (5+)
-
-* [RingoJS](https://github.com/ringo/ringojs)
-  * [Stick](https://github.com/hns/stick)
-  * [Ringo Modulr](https://github.com/hns/ringo-modulr)
-
+* Java (for Google Closure compiler usage)
 * [Node.js](https://github.com/ry/node)
   * [npm](https://github.com/isaacs/npm)
   * [CoffeeScript](https://github.com/jashkenas/coffee-script)
   * [Stylus](https://github.com/LearnBoost/stylus)
   * [Eco](https://github.com/sstephenson/eco)
-  * [Fusion](https://github.com/brunchwithcoffee/fusion)
+  * [Stitch](https://github.com/sstephenson/stitch)
+  * [Express](https://github.com/visionmedia/express)
+  * [Nodeunit](https://github.com/caolan/nodeunit)
+  * [Backbone](https://github.com/documentcloud/backbone)
   * [Docco](https://github.com/jashkenas/docco) (+ [Pygments](http://pygments.org/download/))
 
-Mentioned packages are installable via `ringo-admin` and `npm` respectively.
+Mentioned packages are installable via `npm`.
 
-Usage example of the former:
-
-    $ ringo-admin install hns/stick
-
-And the latter:
+Usage example:
 
     $ npm install coffee-script
 
 ## Howto
 
-For dev, first start compilation watchers in separate shell sessions, e.g.:
+Launch dev server:
 
-    $ ./bin/coffee-watch
+    $ cake run:express
 
-    $ ./bin/stylus-watch
+Now, point your browser to `localhost:3333` and enjoy hacking.
 
-    $ ./bin/fusion-watch
-
-Then, launch dev server:
-
-    $ ringo server/main.js
-
-Now, point your browser to `localhost:8080` and enjoy hacking.
-
-FYI: source code resides in `src`, compiled code in `public`.
+FYI: source code resides in `src`, (on-the-fly) compiled code in `public`.
 
 Additionally, deployable code can be found in `build` and (re)built via:
 
-    $ ./bin/build-project
+    $ cake build
 
 BTW, Google Closure compiler is used for JS minification and optimization.
 
+Test suite can be run as follows:
+
+    $ cake test
+
 Documentation can be (re)generated in `public/docs` via:
 
-    $ ./bin/docco-create
+    $ cake gen:docco

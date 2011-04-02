@@ -1,0 +1,11 @@
+CACHE MANIFEST
+
+# v1
+
+NETWORK:
+*
+
+CACHE:
+img/destroy.png
+app.min.js
+screen.min.css
