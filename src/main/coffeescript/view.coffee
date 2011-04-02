@@ -116,11 +116,11 @@ class exports.HomeView extends Backbone.View
   # Re-rendering the app just means refreshing the statistics -- the rest
   # of the app doesn't change.
   render: ->
-    @.$('#todo-stats').html(stats_tmpl(
+    @.$('#todo-stats').html(stats_tmpl
       total:     Todos.length
       done:      Todos.done().length
       remaining: Todos.remaining().length
-    ))
+    )
     return
 
   # Add a single todo item to the list by creating a view for it, and

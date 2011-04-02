@@ -57,11 +57,11 @@ loading any preexisting todos that might be saved in <em>localStorage</em>.</p> 
     <span class="nx">Todos</span><span class="p">.</span><span class="nx">fetch</span><span class="p">()</span>
     <span class="k">return</span></pre></div>             </td>           </tr>                               <tr id="section-20">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-20">&#182;</a>               </div>               <p>Re-rendering the app just means refreshing the statistics -- the rest
 of the app doesn't change.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">render: </span><span class="o">-&gt;</span>
-    <span class="err">@</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todo-stats&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">stats_tmpl</span><span class="p">(</span>
+    <span class="err">@</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todo-stats&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">stats_tmpl</span>
       <span class="nv">total: </span>    <span class="nx">Todos</span><span class="p">.</span><span class="nx">length</span>
       <span class="nv">done: </span>     <span class="nx">Todos</span><span class="p">.</span><span class="nx">done</span><span class="p">().</span><span class="nx">length</span>
       <span class="nv">remaining: </span><span class="nx">Todos</span><span class="p">.</span><span class="nx">remaining</span><span class="p">().</span><span class="nx">length</span>
-    <span class="p">))</span>
+    <span class="p">)</span>
     <span class="k">return</span></pre></div>             </td>           </tr>                               <tr id="section-21">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-21">&#182;</a>               </div>               <p>Add a single todo item to the list by creating a view for it, and
 appending its element to the <code>&lt;ul&gt;</code>.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">addOne: </span><span class="nf">(todo) -&gt;</span>
     <span class="nv">view = </span><span class="k">new</span> <span class="nx">TodoView</span><span class="p">(</span><span class="nv">model: </span><span class="nx">todo</span><span class="p">)</span>
