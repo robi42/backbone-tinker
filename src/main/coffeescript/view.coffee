@@ -85,8 +85,8 @@ class TodoView extends Backbone.View
 # The Application
 # ---------------
 
-# Our overall **HomeView** is the top-level piece of UI.
-class exports.HomeView extends Backbone.View
+# Our overall **AppView** is the top-level piece of UI.
+class exports.AppView extends Backbone.View
 
   # Instead of generating a new element, bind to the existing skeleton of
   # the app already present in the HTML.

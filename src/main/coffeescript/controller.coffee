@@ -1,8 +1,10 @@
-{HomeView} = require 'view'
+{AppView} = require 'view'
 
 
 # App Controller
 # --------------
+
+# Basically, just lays out `/#/home` route.
 class exports.App extends Backbone.Controller
   initialize: ->
     super
@@ -14,5 +16,5 @@ class exports.App extends Backbone.Controller
     '/home': 'index'
 
   index: ->
-    @views.home = new HomeView
+    @views.home = new AppView
     return
