@@ -6,10 +6,10 @@ browser         = require('tobi').createBrowser 3333, 'localhost'
 
 module.exports =
   'Nodeunit env is set up correctly.': (test) ->
-  	test.expect 1
-  	test.ok true
-  	test.done()
-  	return
+    test.expect 1
+    test.ok true
+    test.done()
+    return
 
   'Todo models hold data as expected.': (test) ->
     test.expect 4
