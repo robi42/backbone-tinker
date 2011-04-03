@@ -170,6 +170,6 @@ class exports.AppView extends Backbone.View
     if val is '' or val is @input.attr('placeholder')
       return
 
-    show = -> tooltip.show().fadeIn(); return
+    show = -> tooltip.fadeIn(); return
     @tooltipTimeout = _.delay(show, 1000)
     return
