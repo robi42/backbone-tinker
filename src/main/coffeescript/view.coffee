@@ -23,14 +23,13 @@ class TodoView extends Backbone.View
   # a one-to-one correspondence between a **Todo** and a **TodoView** in this
   # app, we set a direct reference on the model for convenience.
   initialize: ->
-    _.bindAll @, 'render', 'close'
     @model.bind 'change', @.render
 
     @model.view = @
     return
 
   # Re-render the contents of the todo item.
-  render: ->
+  render: =>
     $(@el).html item_tmpl(@model.toJSON())
     @.setContent()
     @
@@ -60,7 +59,7 @@ class TodoView extends Backbone.View
     return
 
   # Close the `"editing"` mode, saving changes to the todo.
-  close: ->
+  close: =>
     @model.save content: @input.val()
     $(@el).removeClass 'editing'
     return
