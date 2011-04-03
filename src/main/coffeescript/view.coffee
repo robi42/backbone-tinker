@@ -1,6 +1,6 @@
-item_tmpl  = require('item_tmpl')
-stats_tmpl = require('stats_tmpl')
-{Todos}    = require('model')
+item_tmpl  = require 'item_tmpl'
+stats_tmpl = require 'stats_tmpl'
+{Todos}    = require 'model'
 
 
 # Todo Item View
