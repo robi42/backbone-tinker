@@ -45,7 +45,7 @@ renameCss = (data) ->
   return
 
 
-process = (proc, func) ->
+runProcess = (proc, func) ->
   proc.stderr.on 'data', func
   proc.stdout.on 'data', func
   return
@@ -63,7 +63,27 @@ spawnClosure = ->
     '--js_output_file', "#{buildPath}/app.min.js"
   ])
 
-  process closure, testAndCleanUp
+  runProcess closure, testAndCleanUp
+  return
+
+
+watchStyl = ->
+  stylus = spawn('stylus', [
+    '--out', "#{publicPath}",
+    '--watch', "#{srcPath}/stylus/screen.styl"
+  ])
+
+  runProcess stylus, log
+  return
+
+
+runExpress = (options) ->
+  package = stitch.createPackage(paths: stitchPaths)
+  app = express.createServer(express.static(publicPath))
+  port = options.port or 3333
+
+  app.get('/js/app.js', package.createServer()).listen port
+  console.log "Running Express dev server on port #{port}."
   return
 
 
@@ -94,7 +114,7 @@ task 'build', 'Build project.', ->
     "#{srcPath}/stylus/screen.styl"
   ])
 
-  process stylus, renameCss
+  runProcess stylus, renameCss
 
   assetTags = '''
     <link rel="stylesheet" media="all" href="screen.min.css" />
@@ -112,8 +132,13 @@ task 'build', 'Build project.', ->
   return
 
 
-task 'test', 'Run test suite.', ->
-  invoke 'run:express'
+task 'test', 'Run test suite.', (options) ->
+  stylus = spawn('stylus', [
+    '--out', "#{publicPath}", "#{srcPath}/stylus/screen.styl"
+  ])
+
+  runProcess stylus, log
+  runExpress options
 
   {reporters} = require 'nodeunit'
   reporters.default.run ['src/test']
@@ -126,7 +151,7 @@ task 'deploy', 'Deploy project.', (options) ->
   location = options.location or defaultLocation
   scp = spawn('scp', ['-r', 'build', location])
 
-  process scp, log
+  runProcess scp, log
   return
 
 
@@ -136,27 +161,11 @@ task 'gen:docco', 'Generate Docco docs.', ->
   	.map (file) -> "#{path}/#{file}"
   docco = spawn('docco', files, cwd: publicPath)
 
-  process docco, log
-  return
-
-
-task 'watch:styl', 'Watch *.styl to compile.', ->
-  stylus = spawn('stylus', [
-  	'--out', "#{publicPath}",
-    '--watch', "#{srcPath}/stylus/screen.styl"
-  ])
-
-  process stylus, log
+  runProcess docco, log
   return
 
 
 task 'run:express', 'Run Express dev server.', (options) ->
-  invoke 'watch:styl'
-
-  package = stitch.createPackage(paths: stitchPaths)
-  app = express.createServer(express.static(publicPath))
-  port = options.port or 3333
-
-  app.get('/js/app.js', package.createServer()).listen port
-  console.log "Running Express dev server on port #{port}."
+  watchStyl()
+  runExpress options
   return

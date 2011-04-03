@@ -5,7 +5,7 @@ This is a little playground for cutting-edge single-page JS app dev.
 ## Dependencies
 
 * Java (for Google Closure compiler usage)
-* [Node.js](https://github.com/joyent/node) (0.4.4)
+* [Node.js](https://github.com/joyent/node) (0.4.4+)
   * [npm](https://github.com/isaacs/npm)
   * [CoffeeScript](https://github.com/jashkenas/coffee-script)
   * [Stylus](https://github.com/LearnBoost/stylus)
