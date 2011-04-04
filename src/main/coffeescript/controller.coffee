@@ -12,7 +12,6 @@ class exports.App extends Backbone.Controller
     return
 
   routes:
-    ''     : 'index'
     '/home': 'index'
 
   index: ->
