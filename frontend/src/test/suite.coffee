@@ -1,5 +1,4 @@
 global.Backbone = require 'backbone'
-global.Store    = (namespace) -> return
 {todos}         = require "#{__dirname}/fixtures/todos"
 {Todos}         = require "#{__dirname}/../main/coffeescript/model"
 browser         = require('tobi').createBrowser 3333, 'localhost'
