@@ -41,9 +41,9 @@ trait TodoServices extends BlueEyesServiceBuilder with HttpRequestCombinators {
                 refineContentType[JValue, JObject] { request: Request[JObject] =>
                   val content = request.content.get
                   val jFields = content.children.asInstanceOf[List[JField]]
-                  val uuid = UUID.randomUUID().toString
+                  val uuid    = UUID.randomUUID().toString
                   val idField = List(JField("id", JString(uuid)))
-                  val data = JObject(jFields ++ idField)
+                  val data    = JObject(jFields ++ idField)
                   database[JNothing.type](insert(data) into collection)
                   Response[JValue](content = Some(data), headers = xDomainAjax)
                 }
@@ -91,8 +91,8 @@ trait TodoServices extends BlueEyesServiceBuilder with HttpRequestCombinators {
   }
 
 case class Config(config: ConfigMap, mongo: Mongo) {
-  val database   = mongo.database(config.getString("mongo.db", "tododb"))
-  val collection = config.getString("mongo.collection", "todos")
+  val database    = mongo.database(config.getString("mongo.db", "tododb"))
+  val collection  = config.getString("mongo.collection", "todos")
   val xDomainAjax = Map(
     "Access-Control-Allow-Origin"  -> config.getString("xdomain", "http://localhost:3333"),
     "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE",
@@ -104,5 +104,5 @@ case class Config(config: ConfigMap, mongo: Mongo) {
 object TodoServer extends BlueEyesServer with TodoServices {
   private lazy val injector = Guice.createInjector(
     new FilesystemConfiggyModule(ConfiggyModule.FileLoc), new RealMongoModule)
-  override lazy val mongo = injector.getInstance(classOf[Mongo])
+  override lazy val mongo   = injector.getInstance(classOf[Mongo])
 }

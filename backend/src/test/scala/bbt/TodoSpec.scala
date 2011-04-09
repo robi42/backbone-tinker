@@ -17,7 +17,7 @@ class TodoSpec extends BlueEyesServiceSpecification[Array[Byte]] with TodoServic
 
   path$("/todos") {
     get$ { response: Response[Array[Byte]] =>
-      response.status mustEqual Status(OK)
+      response.status      mustEqual Status(OK)
       response.content.get mustNotBe None
     }
   } should "return OK status."
