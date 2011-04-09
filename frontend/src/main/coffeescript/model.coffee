@@ -20,7 +20,7 @@ class Todo extends Backbone.Model
     @.save done: not @.get('done')
     return
 
-  # Remove this Todo from *localStorage* and delete its view.
+  # Remove this Todo from *storage* and delete its view.
   clear: ->
     @.destroy()
     @view.remove()
@@ -30,15 +30,14 @@ class Todo extends Backbone.Model
 # Todo Collection
 # ---------------
 
-# The collection of todos is backed by *localStorage* instead of a remote
-# server.
+# The collection of todos is backed by a remote BlueEyes/MongoDB server.
 class TodoList extends Backbone.Collection
 
   # Reference to this collection's model.
   model: Todo
 
-  # Save all of the todo items under the `"todos"` namespace.
-  localStorage: new Store('todos')
+  # Remote BlueEyes server location.
+  url: 'http://localhost:8888/todos'
 
   # Filter down the list of all todo items that are finished.
   done: ->

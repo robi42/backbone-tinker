@@ -1,6 +1,7 @@
 # An example Backbone application contributed by
-# [Jérôme Gravel-Niquet](http://jgn.me/). This demo uses a simple
-# LocalStorage adapter to persist Backbone models within your browser.
+# [Jérôme Gravel-Niquet](http://jgn.me/). This demo has been hacked on by
+# [Robert Thurnher](http://robert42.com/) and is backed by a
+# [BlueEyes](https://github.com/jdegoes/blueeyes)/MongoDB server.
 
 # Load the application once the DOM is ready, using `jQuery.ready`:
 $ ->

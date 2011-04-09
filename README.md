@@ -4,8 +4,10 @@ This is a little playground for cutting-edge single-page JS app dev.
 
 ## Dependencies
 
-* Java (for Google Closure compiler usage)
-* [Node.js](https://github.com/joyent/node) (0.4.4+)
+* Java (5+)
+* [Sbt](http://code.google.com/p/simple-build-tool/wiki/Setup) (0.7.5)
+* [MongoDB](http://www.mongodb.org/display/DOCS/Quickstart)
+* [Node.js](https://github.com/joyent/node) (0.4+)
   * [npm](https://github.com/isaacs/npm)
   * [CoffeeScript](https://github.com/jashkenas/coffee-script)
   * [Stylus](https://github.com/LearnBoost/stylus)
@@ -17,7 +19,7 @@ This is a little playground for cutting-edge single-page JS app dev.
   * [Backbone](https://github.com/documentcloud/backbone)
   * [Docco](https://github.com/jashkenas/docco) (+ [Pygments](http://pygments.org/download/))
 
-Mentioned packages are installable via `npm`.
+Mentioned Node packages are installable via `npm`.
 
 Usage example:
 
@@ -25,24 +27,41 @@ Usage example:
 
 ## Howto
 
-Launch dev server:
+First of all, build backend:
 
+    $ cd backend
+    $ sbt
+    > update
+    > package
+
+Then, start MongoDB server, e.g.:
+
+    $ mongod
+
+And backend API server:
+
+    $ cd backend
+    $ ./run-blueeyes.sh
+
+Now, launch frontend dev server:
+
+    $ cd frontend
     $ cake run:express
 
-Now, point your browser to `localhost:3333` and enjoy hacking.
+Finally, point your browser to `localhost:3333` and enjoy hacking.
 
-FYI: source code resides in `src`, (on-the-fly) compiled code in `public`.
+FYI: frontend source code resides in `src`, (on-the-fly) compiled code in `public`.
 
-Additionally, deployable code can be found in `build` and (re)built via:
+Additionally, deployable frontend code can be found in `build` and (re)built via:
 
     $ cake build
 
 BTW, Google Closure compiler is used for JS minification and optimization.
 
-Test suite can be run as follows:
+Frontend test suite can be run as follows:
 
     $ cake test
 
-Documentation can be (re)generated in `public/docs` via:
+Frontend documentation can be (re)generated in `public/docs` via:
 
     $ cake gen:docco

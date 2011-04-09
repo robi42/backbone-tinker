@@ -58,7 +58,6 @@ spawnClosure = ->
     '--js', "#{publicPath}/js/jquery-1.5.2.js",
     '--js', "#{publicPath}/js/underscore-1.1.5.js",
     '--js', "#{publicPath}/js/backbone-0.3.3.js",
-    '--js', "#{publicPath}/js/backbone-localstorage.js",
     '--js', "#{buildPath}/app.js",
     '--js_output_file', "#{buildPath}/app.min.js"
   ])

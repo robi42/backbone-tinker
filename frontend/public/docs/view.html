@@ -44,7 +44,7 @@ the app already present in the HTML.</p>             </td>             <td class
     <span class="s1">&#39;keyup #new-todo&#39;</span>    <span class="o">:</span> <span class="s1">&#39;showTooltip&#39;</span>
     <span class="s1">&#39;click .todo-clear a&#39;</span><span class="o">:</span> <span class="s1">&#39;clearCompleted&#39;</span></pre></div>             </td>           </tr>                               <tr id="section-19">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-19">&#182;</a>               </div>               <p>At initialization we bind to the relevant events on the <code>Todos</code>
 collection, when items are added or changed. Kick things off by
-loading any preexisting todos that might be saved in <em>localStorage</em>.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">initialize: </span><span class="o">-&gt;</span>
+loading any preexisting todos that might be saved in <em>storage</em>.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">initialize: </span><span class="o">-&gt;</span>
     <span class="nx">_</span><span class="p">.</span><span class="nx">bindAll</span> <span class="err">@</span><span class="p">,</span> <span class="s1">&#39;addOne&#39;</span><span class="p">,</span> <span class="s1">&#39;addAll&#39;</span><span class="p">,</span> <span class="s1">&#39;render&#39;</span>
 
     <span class="vi">@input = </span><span class="err">@</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new-todo&#39;</span><span class="p">)</span>
@@ -72,7 +72,7 @@ appending its element to the <code>&lt;ul&gt;</code>.</p>             </td>     
     <span class="nv">content: </span><span class="nx">@input</span><span class="p">.</span><span class="nx">val</span><span class="p">()</span>
     <span class="nv">order: </span>  <span class="nx">Todos</span><span class="p">.</span><span class="nx">nextOrder</span><span class="p">()</span>
     <span class="nv">done: </span>   <span class="kc">false</span></pre></div>             </td>           </tr>                               <tr id="section-24">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-24">&#182;</a>               </div>               <p>If you hit return in the main input field, create new <strong>Todo</strong> model,
-persisting it to <em>localStorage</em>.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">createOnEnter: </span><span class="nf">(e) -&gt;</span>
+persisting it to <em>storage</em>.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nv">createOnEnter: </span><span class="nf">(e) -&gt;</span>
     <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">isnt</span> <span class="mi">13</span>
       <span class="k">return</span>
 

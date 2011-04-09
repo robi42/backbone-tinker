@@ -99,7 +99,7 @@ class exports.AppView extends Backbone.View
 
   # At initialization we bind to the relevant events on the `Todos`
   # collection, when items are added or changed. Kick things off by
-  # loading any preexisting todos that might be saved in *localStorage*.
+  # loading any preexisting todos that might be saved in *storage*.
   initialize: ->
     _.bindAll @, 'addOne', 'addAll', 'render'
 
@@ -142,7 +142,7 @@ class exports.AppView extends Backbone.View
     done:    false
 
   # If you hit return in the main input field, create new **Todo** model,
-  # persisting it to *localStorage*.
+  # persisting it to *storage*.
   createOnEnter: (e) ->
     if e.keyCode isnt 13
       return
