@@ -43,6 +43,8 @@ And backend API server:
     $ cd backend
     $ ./run-blueeyes.sh
 
+Backend config resides in `backend/src/main/resources/blueeyes.conf`, BTW.
+
 Now, launch frontend dev server:
 
     $ cd frontend
