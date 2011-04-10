@@ -66,6 +66,16 @@ spawnClosure = ->
   return
 
 
+genDocco = (callback) ->
+  path = "#{srcPath}/coffeescript"
+  files = fs.readdirSync(path)
+  	.map (file) -> "#{path}/#{file}"
+  docco = spawn('docco', files, cwd: publicPath)
+
+  runProcess docco, callback or log
+  return
+
+
 watchStyl = ->
   stylus = spawn('stylus', [
     '--out', "#{publicPath}",
@@ -97,7 +107,10 @@ copyDirToBuild = (path) ->
 
 
 task 'build', 'Build project.', ->
-  invoke 'gen:docco'
+  genDocco (data) ->
+    log(data)
+    copyDirToBuild "#{publicPath}/docs"
+    return
 
   package = stitch.createPackage(paths: stitchPaths)
 
@@ -127,7 +140,6 @@ task 'build', 'Build project.', ->
     fs.readFileSync("#{publicPath}/cache.manifest")
 
   copyDirToBuild "#{publicPath}/img"
-  copyDirToBuild "#{publicPath}/docs"
   return
 
 
@@ -155,12 +167,7 @@ task 'deploy', 'Deploy project.', (options) ->
 
 
 task 'gen:docco', 'Generate Docco docs.', ->
-  path = "#{srcPath}/coffeescript"
-  files = fs.readdirSync(path)
-  	.map (file) -> "#{path}/#{file}"
-  docco = spawn('docco', files, cwd: publicPath)
-
-  runProcess docco, log
+  genDocco()
   return
 
 
