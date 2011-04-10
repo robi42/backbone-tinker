@@ -100,7 +100,7 @@ copyDirToBuild = (path) ->
   fs.readdirSync(path)
     .map((file) -> "#{path}/#{file}")
     .forEach (file) ->
-      fs.writeFile file.replace(publicPath, buildPath),
+      fs.writeFileSync file.replace(publicPath, buildPath),
         fs.readFileSync file
       return
   return
@@ -115,7 +115,7 @@ task 'build', 'Build project.', ->
   package = stitch.createPackage(paths: stitchPaths)
 
   package.compile (err, source) ->
-    fs.writeFile "#{buildPath}/app.js", source
+    fs.writeFileSync "#{buildPath}/app.js", source
     console.log 'Compiled `app.js`.'
 
     spawnClosure()
@@ -132,11 +132,11 @@ task 'build', 'Build project.', ->
     <link rel="stylesheet" media="all" href="screen.min.css" />
         <script src="app.min.js"></script>\n  '''
 
-  fs.writeFile "#{buildPath}/index.html",
+  fs.writeFileSync "#{buildPath}/index.html",
     fs.readFileSync("#{publicPath}/index.html").toString()
       .replace /<link.+\n\s*(<script.+\n\s*)+/, assetTags
 
-  fs.writeFile "#{buildPath}/cache.manifest",
+  fs.writeFileSync "#{buildPath}/cache.manifest",
     fs.readFileSync("#{publicPath}/cache.manifest")
 
   copyDirToBuild "#{publicPath}/img"
