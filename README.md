@@ -34,6 +34,8 @@ First of all, build backend:
     > update
     > package
 
+(FYI: one can use `assembly` task to make a deployable JAR incl. dependencies.)
+
 Then, start MongoDB server, e.g.:
 
     $ mongod

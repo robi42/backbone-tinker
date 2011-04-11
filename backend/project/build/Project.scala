@@ -1,6 +1,6 @@
 import sbt._
 
-class Project(info: ProjectInfo) extends DefaultProject(info) {
+class Project(info: ProjectInfo) extends DefaultProject(info) with assembly.AssemblyBuilder {
   val sonatypeRepo    = "Sonatype Releases"    at "http://oss.sonatype.org/content/repositories/releases"
   val scalaSnapshots  = "Scala-tools.org Repo" at "http://scala-tools.org/repo-snapshots/"
   val scalableRepo    = "Akka Repo"            at "http://scalablesolutions.se/akka/repository"
